@@ -18,7 +18,7 @@ public class scrapsDetails : MonoBehaviour
             //destroys the scrap and increase scrap collected when player collide with it
             playerStats ps = other.GetComponent<playerStats>();
             ps.scrapsCollected += 1;
-            ps.scrapsText.text = "Scraps : " + ps.scrapsCollected;
+            ps.scrapsText.text = "" + ps.scrapsCollected;
             Destroy(gameObject);
         }
     }

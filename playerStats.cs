@@ -1,6 +1,7 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 //Just contains some player details and attached to the player
 
@@ -9,6 +10,7 @@ public class playerStats : MonoBehaviour
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI staminaText;
     public TextMeshProUGUI scrapsText;
+    public TextMeshProUGUI scoreText;
     public int scrapsCollected = 0;
 
     public float baseMaxHealth = 100;
@@ -33,6 +35,7 @@ public class playerStats : MonoBehaviour
 
     public float currentHP;
     public float currentStamina;
+    public int score = 0;
 
     public bool energyOrbCollected = true;
     public bool hpOrbCollected = true;
@@ -47,8 +50,19 @@ public class playerStats : MonoBehaviour
         currentHP = maxHealth;
         currentStamina = maxStamina;
 
-        healthText.text = "Health   : " + currentHP + " / " + maxHealth;
-        staminaText.text = "Stamina : " + currentStamina + " / " + maxStamina;
-        scrapsText.text = " Scraps : " + scrapsCollected;
+        healthText.text = "" + currentHP;
+        staminaText.text = "" + currentStamina;
+        scrapsText.text = "" + scrapsCollected;
+        scoreText.text = " SCORE : " + score;
+
+    }
+
+    void Update()
+    {
+        if (currentHP <= 0)
+        {
+            viewScore.finalScore = score;
+            SceneManager.LoadScene(3);
+        }
     }
 }

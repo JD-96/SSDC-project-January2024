@@ -8,6 +8,10 @@ public class MainMenu : MonoBehaviour
 {
     public void LoadOpenWorld()
     {
+        SceneManager.LoadScene(2);
+    }
+    public void LoadInstruction()
+    {
         SceneManager.LoadScene(1);
     }
     public void QuitGame()

@@ -22,7 +22,7 @@ public class hpOrbDetails : MonoBehaviour
             {
                 ps.currentHP = ps.maxHealth;
             }
-            ps.healthText.text = "Health   : " + ps.currentHP + " / " + ps.maxHealth;
+            ps.healthText.text = "" + ps.currentHP;
             ps.hpOrbCollected = true;
             Destroy(gameObject);
         }

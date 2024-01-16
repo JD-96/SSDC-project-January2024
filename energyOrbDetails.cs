@@ -22,7 +22,7 @@ public class energyOrbDetails : MonoBehaviour
             {
                 ps.currentStamina = ps.maxStamina;
             }
-            ps.staminaText.text = "Stamina : " + ps.currentStamina + " / " + ps.maxStamina;
+            ps.staminaText.text = "" + ps.currentStamina;
             ps.energyOrbCollected = true;
             Destroy(gameObject);
         }

@@ -23,7 +23,7 @@ public class bulletSpawning : MonoBehaviour
     private bool reloading = false;
     private void Start()
     {
-        viewAmmo.text = "AMMO : " + currentAmmo + " / " + maxAmmo;
+        viewAmmo.text = currentAmmo + "/" + maxAmmo;
     }
     void FixedUpdate()
     {
@@ -68,7 +68,7 @@ public class bulletSpawning : MonoBehaviour
             maxAmmo = currentAmmo + maxAmmo - 30;
             currentAmmo = 30;
         }
-        viewAmmo.text = "AMMO : " + currentAmmo + " / " + maxAmmo;
+        viewAmmo.text = currentAmmo + "/" + maxAmmo;
         reloading = false;
     }
     
@@ -77,7 +77,7 @@ public class bulletSpawning : MonoBehaviour
         bulletTrigger = false;
         yield return new WaitForSeconds(bulletCooldown);
 
-        viewAmmo.text = "AMMO : " + currentAmmo + " / " + maxAmmo;
+        viewAmmo.text = currentAmmo + "/" + maxAmmo;
         bulletTrigger = true;
     }
     private void OnTriggerEnter(Collider other)
@@ -86,7 +86,7 @@ public class bulletSpawning : MonoBehaviour
         {
             //When collide with Ammo, give 30 clip ammo
             maxAmmo+=30;
-            viewAmmo.text = "AMMO : " + currentAmmo + " / " + maxAmmo;
+            viewAmmo.text = currentAmmo + "/" + maxAmmo;
             amm.bulletCollected = true; //Triggers ammo collected from ammo workbench
             Destroy(other.gameObject);
         }
