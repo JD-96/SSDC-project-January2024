@@ -42,7 +42,7 @@ public class hpOrbSpawning : MonoBehaviour
             {
                 if (ps.scrapsCollected >= scrapsNeeded)
                 {
-                    workbenchInterface.text = " E ";
+                    workbenchInterface.text = " E \n MAKE MEDICINE (" + scrapsNeeded + ")";
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         StartCoroutine(MakingHPOrb());
@@ -50,7 +50,7 @@ public class hpOrbSpawning : MonoBehaviour
                 }
                 else
                 {
-                    workbenchInterface.text = " NOT ENOUGH SCRAPS ";
+                    workbenchInterface.text = " NOT ENOUGH SCRAPS (" + scrapsNeeded + ")";
                 }
             }
 
@@ -67,7 +67,7 @@ public class hpOrbSpawning : MonoBehaviour
     {
         makingOrb = true;
         ps.scrapsCollected -= scrapsNeeded;
-        ps.scrapsText.text = " Scraps : " + ps.scrapsCollected;
+        ps.scrapsText.text = "" + ps.scrapsCollected;
         yield return new WaitForSeconds(makingTime);
         Instantiate(hpOrbPrefab, gameObject.transform.position + new Vector3(0.2f, 0.5f, 2f), Quaternion.identity);
         ps.hpOrbCollected = false;

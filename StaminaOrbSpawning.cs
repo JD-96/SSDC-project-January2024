@@ -42,7 +42,7 @@ public class StaminaOrbSpawning : MonoBehaviour
             {
                 if (ps.scrapsCollected >= scrapsNeeded)
                 {
-                    workbenchInterface.text = " E ";
+                    workbenchInterface.text = " E \n MAKE ENERGY (" + scrapsNeeded + ")";
                     if (Input.GetKeyDown(KeyCode.E))
                     {
                         StartCoroutine(MakingEnergyOrb());
@@ -50,7 +50,7 @@ public class StaminaOrbSpawning : MonoBehaviour
                 }
                 else
                 {
-                    workbenchInterface.text = " NOT ENOUGH SCRAPS ";
+                    workbenchInterface.text = " NOT ENOUGH SCRAPS (" + scrapsNeeded + ")";
                 }
             }
 
@@ -66,7 +66,7 @@ public class StaminaOrbSpawning : MonoBehaviour
     {
         makingOrb = true;
         ps.scrapsCollected -= scrapsNeeded;
-        ps.scrapsText.text = " Scraps : " + ps.scrapsCollected;
+        ps.scrapsText.text = "" + ps.scrapsCollected;
         yield return new WaitForSeconds(makingTime);
         Instantiate(staminaOrbPrefab, gameObject.transform.position + new Vector3(0.2f, 0.5f, 2f), Quaternion.identity);
         ps.energyOrbCollected = false;

@@ -33,7 +33,7 @@ public class ammoSpawning : MonoBehaviour
             {
                 if (ps.scrapsCollected >= scrapsNeeded && bulletCollected)
                 {
-                    workbenchInterface.text = " E ";
+                    workbenchInterface.text = " E \n Make Bullets (" + scrapsNeeded + ")";
                     if(Input.GetKeyDown(KeyCode.E)) 
                     {
                         StartCoroutine(MakeBullet());
@@ -41,7 +41,7 @@ public class ammoSpawning : MonoBehaviour
                 }
                 if(ps.scrapsCollected< scrapsNeeded && bulletCollected)
                 {
-                    workbenchInterface.text = " NOT ENOUGH SCRAPS";
+                    workbenchInterface.text = " NOT ENOUGH SCRAPS (" + scrapsNeeded + ")";
                 }
                 if (!bulletCollected)
                 {
@@ -64,7 +64,7 @@ public class ammoSpawning : MonoBehaviour
     {
         makingBullet = true;
         ps.scrapsCollected -= scrapsNeeded;
-        ps.scrapsText.text = " Scraps : " + ps.scrapsCollected;
+        ps.scrapsText.text = "" + ps.scrapsCollected;
         yield return new WaitForSeconds(makingTime);
         Instantiate(bullet, gameObject.transform.position + new Vector3(0f, 0.5f, -2f), Quaternion.identity);
         bulletCollected = false;

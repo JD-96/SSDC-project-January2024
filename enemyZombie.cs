@@ -28,7 +28,7 @@ public class enemyZombie : MonoBehaviour
     public Transform zombieDomain;
     public Transform scraps;
     public float followDistance = 25f;
-    public float damageDistance = 0.5f;
+    public float damageDistance = 2f;
     public float zombieHealth = 30f;
 
     public AnimationClip walking;
@@ -146,7 +146,9 @@ public class enemyZombie : MonoBehaviour
     }
     private IEnumerator DeathCooldown()
     {
-        boxCollider.size = new Vector3(0f, 0f, 0f);
+        ps.score += 15;
+        ps.scoreText.text = " SCORE : " + ps.score;
+        boxCollider.size = Vector3.zero;
         deathTrigger = true;
         healthText.text = "";
         anm.Play(death.name);
@@ -159,8 +161,11 @@ public class enemyZombie : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         attacking = false;
-        ps.currentHP -= 10;
-        ps.healthText.text = "Health   : " + ps.currentHP + " / " + ps.maxHealth;
+        if (!deathTrigger && Vector3.Distance(transform.position, playerTarget.position) < 2 * damageDistance)
+        {
+            ps.currentHP -= 10;
+            ps.healthText.text = "" + ps.currentHP;
+        }
     }
 
     private IEnumerator RandomMotionCountdown()

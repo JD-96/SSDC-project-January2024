@@ -110,7 +110,7 @@ public class PlayerMovement : MonoBehaviour
         //Dash logic
         rb.AddForce(transform.forward * sprintSpeed, ForceMode.Impulse);
         ps.currentStamina -= 10;
-        ps.staminaText.text = "Stamina : " + ps.currentStamina + " / " + ps.baseMaxStamina;
+        ps.staminaText.text = "" + ps.currentStamina;
         StartCoroutine(SprintCooldown());
     }
 
